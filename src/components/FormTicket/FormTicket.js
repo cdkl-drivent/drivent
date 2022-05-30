@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Ticket from '../Ticket';
-import { SCFormTicket, SCSubContainer } from './styled';
+import { SCFormTicket, SCSubContainer, SCSecondaryText } from './styled';
 
 export default function FormTicket() {
   const [data, setData] = useState({
@@ -18,7 +18,7 @@ export default function FormTicket() {
   return (
     <SCFormTicket onSubmit={handleSelection}>
       <SCSubContainer>
-        <p>Primeiro, escolha sua modalidade de ingresso</p>
+        <SCSecondaryText>Primeiro, escolha sua modalidade de ingresso</SCSecondaryText>
         <Ticket data={data} setData={setData} />
       </SCSubContainer>
     </SCFormTicket>
