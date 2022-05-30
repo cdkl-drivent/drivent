@@ -41,6 +41,7 @@ const StyledBoxText = styled.p`
   line-height: 19px;
   text-align: center;
   color: #454545;
+  pointer-events: none;
 `;
 
 const StyledPriceText = styled.p`
@@ -50,4 +51,5 @@ const StyledPriceText = styled.p`
   line-height: 16px;
   text-align: center;
   color: #898989;
+  pointer-events: none;
 `;
