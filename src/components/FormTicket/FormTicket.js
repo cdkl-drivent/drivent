@@ -11,6 +11,7 @@ export default function FormTicket() {
 
   function handleSelection(e) {
     e.preventDefault();
+    // eslint-disable-next-line
     console.log(data);
   }
 

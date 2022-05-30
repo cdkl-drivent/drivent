@@ -14,7 +14,6 @@ const SCSubContainer = styled.div`
     font-family: 'arial';
     font-size: 20px;
     line-height: 23px;
-    color: #8e8e8e;
   }
 `;
 

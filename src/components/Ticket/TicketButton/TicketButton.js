@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+
 export default function TicketButton({ type, price, data, setData }) {
   function getInput(e) {
     e.stopPropagation();
-    console.log({ ticketType: e.target.value, ticketPrice: e.target.id });
     setData({ ...data, ticketType: e.target.value, ticketPrice: e.target.id });
   }
+
   return (
     <StyledTicketBox
       key={type}
@@ -21,6 +22,8 @@ export default function TicketButton({ type, price, data, setData }) {
 }
 
 const StyledTicketBox = styled.button`
+  all: unset;
+  box-sizing: border-box;
   width: 145px;
   height: 145px;
   display: flex;
@@ -31,7 +34,7 @@ const StyledTicketBox = styled.button`
   border: 1px solid #cecece;
   border-radius: 20px;
   cursor: pointer;
-  ${(props) => props.select && 'background-color: #ffffe2; border: none;'}
+  ${(props) => props.select && 'background-color: #ffeed2; border: none;'}
 `;
 
 const StyledBoxText = styled.p`
