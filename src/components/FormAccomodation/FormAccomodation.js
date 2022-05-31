@@ -16,6 +16,9 @@ export default function FormAccomodation() {
 
   const typeT = orderData.ticketType !== 'Online';
 
+  const checks =
+    (orderData.ticketType !== '' && orderData.accomodationType !== '') || orderData.ticketType === 'Online';
+
   return (
     <>
       {typeT && (
@@ -26,7 +29,7 @@ export default function FormAccomodation() {
           </SCSubContainer>
         </SCFormAccomodation>
       )}
-      {orderData.ticketType !== '' && orderData.accomodationType !== '' && <TicketSummary orderData={orderData} />}
+      {checks && <TicketSummary orderData={orderData} />}
     </>
   );
 }
