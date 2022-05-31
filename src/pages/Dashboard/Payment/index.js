@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import FormAccomodation from '../../../components/FormAccomodation/FormAccomodation';
 import FormTicket from '../../../components/FormTicket/FormTicket';
 
 export default function Payment() {
@@ -6,6 +7,7 @@ export default function Payment() {
     <>
       <StyledPageTitle>Ingresso e pagamento</StyledPageTitle>
       <FormTicket />
+      <FormAccomodation />
     </>
   );
 }
