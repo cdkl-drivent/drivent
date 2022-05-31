@@ -5,18 +5,19 @@ import * as ticketApi from '../../services/ticketApi';
 import useToken from '../../hooks/useToken';
 import TicketButton from './TicketButton/TicketButton';
 
-function Ticket({ data, setData }) {
+function Ticket({ orderData, setOrderData }) {
   const [tickets, setTickets] = useState([]);
   const token = useToken();
 
   useEffect(() => {
-    loadData();
+    loadOrderData();
   }, []);
 
-  async function loadData() {
+  async function loadOrderData() {
     try {
-      const data = await ticketApi.getTicketInfo(token);
-      setTickets(data);
+      const orderData = await ticketApi.getTicketInfo(token);
+      setTickets(orderData);
+      console.log(orderData);
     } catch (error) {
       // eslint-disable-next-line
       console.log(error);
@@ -24,11 +25,15 @@ function Ticket({ data, setData }) {
   }
 
   return (
-    <StyledButtonsBox>
-      {tickets.map((ticket, i) => (
-        <TicketButton key={i} {...ticket} data={data} setData={setData} />
-      ))}
-    </StyledButtonsBox>
+    <>
+      <StyledButtonsBox>
+        {tickets.map((ticket, i) => (
+          <>
+            <TicketButton key={i} {...ticket} orderData={orderData} setOrderData={setOrderData} />
+          </>
+        ))}
+      </StyledButtonsBox>
+    </>
   );
 }
 

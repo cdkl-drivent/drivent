@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import FormAccomodation from '../../../components/FormAccomodation/FormAccomodation';
 import AlertMessage from '../../../components/AlertMessage';
 import FormTicket from '../../../components/FormTicket/FormTicket';
 import useToken from '../../../hooks/useToken';
@@ -28,6 +29,7 @@ export default function Payment() {
     <>
       <StyledPageTitle>Ingresso e pagamento</StyledPageTitle>
       {enrollments ? <FormTicket /> : <AlertMessage message={message} />}
+      {enrollments ? <FormAccomodation /> : <AlertMessage message={message} />}
     </>
   );
 }

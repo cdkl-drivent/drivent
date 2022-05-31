@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
-export default function TicketButton({ type, price, orderData, setOrderData }) {
+export default function AccomodationButton({ type, price, orderData, setOrderData }) {
   function getInput(e) {
     e.stopPropagation();
-    setOrderData({ ...orderData, ticketType: e.target.value, ticketPrice: parseInt(e.target.id) });
+    setOrderData({ ...orderData, accomodationType: e.target.value, accomodationPrice: parseInt(e.target.id) });
   }
-
   return (
-    <StyledTicketBox
+    <StyledAccomodationBox
       key={type}
-      select={orderData.ticketType === type}
+      select={orderData.accomodationType === type}
       id={price}
       value={type}
       onClick={getInput}
@@ -17,13 +16,12 @@ export default function TicketButton({ type, price, orderData, setOrderData }) {
     >
       <StyledBoxText>{type}</StyledBoxText>
       <StyledPriceText>R$ {price * 0.01}</StyledPriceText>
-    </StyledTicketBox>
+    </StyledAccomodationBox>
   );
 }
 
-const StyledTicketBox = styled.button`
+const StyledAccomodationBox = styled.button`
   all: unset;
-  box-sizing: border-box;
   width: 145px;
   height: 145px;
   display: flex;
