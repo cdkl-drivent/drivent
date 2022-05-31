@@ -21,6 +21,7 @@ export default function AccomodationButton({ type, price, data, setData }) {
 }
 
 const StyledAccomodationBox = styled.button`
+  all: unset;
   width: 145px;
   height: 145px;
   display: flex;
@@ -31,7 +32,7 @@ const StyledAccomodationBox = styled.button`
   border: 1px solid #cecece;
   border-radius: 20px;
   cursor: pointer;
-  ${(props) => props.select && 'background-color: #ffffe2; border: none;'}
+  ${(props) => props.select && 'background-color: #ffeed2; border: none;'}
 `;
 
 const StyledBoxText = styled.p`

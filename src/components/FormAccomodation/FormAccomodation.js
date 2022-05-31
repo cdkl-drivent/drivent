@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Accomodation from '../Accomodation';
-import { SCFormAccomodation, SCSubContainer } from './styled';
+import { SCFormAccomodation, SCSubContainer, SCSecondaryText } from './styled';
 
 export default function FormAccomodation() {
   const [data, setData] = useState({
@@ -10,13 +10,14 @@ export default function FormAccomodation() {
 
   function handleSelection(e) {
     e.preventDefault();
+    // eslint-disable-next-line
     console.log(data);
   }
 
   return (
     <SCFormAccomodation onSubmit={handleSelection}>
       <SCSubContainer>
-        <p>Ótimo! Agora escolha sua modalidade de hospedagem</p>
+        <SCSecondaryText>Ótimo! Agora escolha sua modalidade de hospedagem</SCSecondaryText>
         <Accomodation data={data} setData={setData} />
       </SCSubContainer>
     </SCFormAccomodation>

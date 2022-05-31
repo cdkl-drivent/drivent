@@ -6,7 +6,6 @@ export default function FormTicket() {
   const [data, setData] = useState({
     ticketType: '',
     ticketPrice: '',
-    hotel: '',
   });
 
   function handleSelection(e) {
