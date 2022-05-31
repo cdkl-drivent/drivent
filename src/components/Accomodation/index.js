@@ -5,7 +5,7 @@ import * as accomodationApi from '../../services/accomodationApi';
 import useToken from '../../hooks/useToken';
 import AccomodationButton from './AccomodationButton/AccomodationButton';
 
-function Accomodation({ data, setData }) {
+function Accomodation({ orderData, setOrderData }) {
   const [accomodations, setAccomodations] = useState([]);
   const token = useToken();
 
@@ -25,7 +25,7 @@ function Accomodation({ data, setData }) {
   return (
     <StyledButtonsBox>
       {accomodations.map((accomodation, i) => (
-        <AccomodationButton key={i} {...accomodation} data={data} setData={setData} />
+        <AccomodationButton key={i} {...accomodation} orderData={orderData} setOrderData={setOrderData} />
       ))}
     </StyledButtonsBox>
   );

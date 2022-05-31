@@ -1,12 +1,11 @@
-import { useState } from 'react';
 import Accomodation from '../Accomodation';
 import { SCFormAccomodation, SCSubContainer, SCSecondaryText } from './styled';
 
+import { useContext } from 'react';
+import OrderContext from '../../contexts/OrderContext';
+
 export default function FormAccomodation() {
-  const [data, setData] = useState({
-    accomodationType: '',
-    accomodationPrice: '',
-  });
+  const { orderData, setOrderData } = useContext(OrderContext);
 
   function handleSelection(e) {
     e.preventDefault();
@@ -18,7 +17,7 @@ export default function FormAccomodation() {
     <SCFormAccomodation onSubmit={handleSelection}>
       <SCSubContainer>
         <SCSecondaryText>Ótimo! Agora escolha sua modalidade de hospedagem</SCSecondaryText>
-        <Accomodation data={data} setData={setData} />
+        <Accomodation orderData={orderData} setOrderData={setOrderData} />
       </SCSubContainer>
     </SCFormAccomodation>
   );

@@ -5,7 +5,7 @@ import * as ticketApi from '../../services/ticketApi';
 import useToken from '../../hooks/useToken';
 import TicketButton from './TicketButton/TicketButton';
 
-function Ticket({ data, setData }) {
+function Ticket({ orderData, setOrderData }) {
   const [tickets, setTickets] = useState([]);
   const token = useToken();
 
@@ -26,7 +26,7 @@ function Ticket({ data, setData }) {
   return (
     <StyledButtonsBox>
       {tickets.map((ticket, i) => (
-        <TicketButton key={i} {...ticket} data={data} setData={setData} />
+        <TicketButton key={i} {...ticket} orderData={orderData} setOrderData={setOrderData} />
       ))}
     </StyledButtonsBox>
   );

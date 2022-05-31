@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
-export default function TicketButton({ type, price, data, setData }) {
+export default function TicketButton({ type, price, orderData, setOrderData }) {
   function getInput(e) {
     e.stopPropagation();
-    setData({ ...data, ticketType: e.target.value, ticketPrice: e.target.id });
+    setOrderData({ ...orderData, ticketType: e.target.value, ticketPrice: e.target.id });
   }
 
   return (
     <StyledTicketBox
       key={type}
-      select={data.ticketType === type}
+      select={orderData.ticketType === type}
       id={price}
       value={type}
       onClick={getInput}
