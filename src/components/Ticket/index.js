@@ -18,6 +18,7 @@ function Ticket({ data, setData }) {
       const data = await ticketApi.getTicketInfo(token);
       setTickets(data);
     } catch (error) {
+      // eslint-disable-next-line
       console.log(error);
     }
   }
