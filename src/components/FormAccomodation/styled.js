@@ -4,6 +4,8 @@ const SCFormAccomodation = styled.form`
   display: flex;
   flex-direction: column;
   gap: 44px;
+
+  margin-top: 30px;
 `;
 
 const SCSubContainer = styled.div`

@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-export default function AccomodationButton({ type, price, data, setData }) {
+export default function AccomodationButton({ type, price, orderData, setOrderData }) {
   function getInput(e) {
     e.stopPropagation();
-    setData({ ...data, accomodationType: e.target.value, accomodationPrice: e.target.id });
+    setOrderData({ ...orderData, accomodationType: e.target.value, accomodationPrice: parseInt(e.target.id) });
   }
   return (
     <StyledAccomodationBox
       key={type}
-      select={data.accomodationType === type}
+      select={orderData.accomodationType === type}
       id={price}
       value={type}
       onClick={getInput}
