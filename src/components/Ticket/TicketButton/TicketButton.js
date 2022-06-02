@@ -2,8 +2,17 @@ import styled from 'styled-components';
 
 export default function TicketButton({ type, price, orderData, setOrderData }) {
   function getInput(e) {
-    e.stopPropagation();
-    setOrderData({ ...orderData, ticketType: e.target.value, ticketPrice: parseInt(e.target.id) });
+    if (e.target.value === 'Online') {
+      setOrderData({
+        ...orderData,
+        ticketType: e.target.value,
+        ticketPrice: parseInt(e.target.id),
+        accomodationType: 'Sem Hotel',
+        accomodationPrice: 0,
+      });
+    } else {
+      setOrderData({ ...orderData, ticketType: e.target.value, ticketPrice: parseInt(e.target.id) });
+    }
   }
 
   return (

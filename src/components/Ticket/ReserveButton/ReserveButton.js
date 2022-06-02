@@ -1,12 +1,18 @@
 import styled from 'styled-components';
+import useReserve from '../../../hooks/useReserve';
 
 export default function ReserveButton() {
+  const { setReserve } = useReserve();
   return (
-    <StyledReserveButton>
-        RESERVAR INGRESSO
+    <StyledReserveButton
+      onClick={() => {
+        setReserve(true);
+      }}
+    >
+      RESERVAR INGRESSO
     </StyledReserveButton>
   );
-};
+}
 
 const StyledReserveButton = styled.button`
   height: 37px;
@@ -15,8 +21,7 @@ const StyledReserveButton = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background: #E0E0E0;
+  background: #e0e0e0;
   box-shadow: 0px 2px 10px 0px #00000040;
   border: none;
 `;
-
