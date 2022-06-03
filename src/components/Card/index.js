@@ -4,8 +4,11 @@ import { SCSecondaryText } from '../FormTicket/styled';
 import { Button } from '@material-ui/core';
 import CardData from '../CardData';
 import styled from 'styled-components';
+import useToken from '../../hooks/useToken';
+import * as orderApi from '../../services/orderApi';
 
 function Card() {
+  const token = useToken();
   const [values, setValues] = useState({
     number: '',
     name: '',
@@ -20,10 +23,14 @@ function Card() {
     }
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     // comunicação com API de pagamento
-    // salvar resposta no banco
+    try {
+      await orderApi.updateOrder(values, token);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
