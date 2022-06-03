@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AlertMessage from '../../../components/AlertMessage';
+import Card from '../../../components/Card';
 import FormTicket from '../../../components/FormTicket/FormTicket';
 import useToken from '../../../hooks/useToken';
 import * as enrollmentApi from '../../../services/enrollmentApi';
@@ -19,8 +20,7 @@ export default function Payment() {
       const data = await enrollmentApi.getPersonalInformations(token);
       setEnrollments(data);
     } catch (error) {
-      // eslint-disable-next-line
-      console.log(error);
+      return;
     }
   }
 
@@ -31,6 +31,8 @@ export default function Payment() {
     </>
   );
 }
+
+/* <Card></Card>; */
 
 const StyledPageTitle = styled.p`
   font-family: 'arial';
