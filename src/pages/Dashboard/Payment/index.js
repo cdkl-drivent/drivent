@@ -5,12 +5,16 @@ import AlertMessage from '../../../components/AlertMessage';
 import FormTicket from '../../../components/FormTicket/FormTicket';
 import useToken from '../../../hooks/useToken';
 import * as enrollmentApi from '../../../services/enrollmentApi';
+import useReserve from '../../../hooks/useReserve';
+import FinalizePayment from '../../../components/FinalizePayment/FinalizePayment';
+import useOrder from '../../../hooks/useOrder';
 
 export default function Payment() {
   const [enrollments, setEnrollments] = useState(null);
   const message = 'Você precisa completar sua inscrição antes de prosseguir pra escolha de ingresso';
   const token = useToken();
-
+  const { reserve } = useReserve();
+  const { orderData } = useOrder();
   useEffect(() => {
     loadData();
   }, []);
@@ -28,8 +32,16 @@ export default function Payment() {
   return (
     <>
       <StyledPageTitle>Ingresso e pagamento</StyledPageTitle>
-      {enrollments ? <FormTicket /> : <AlertMessage message={message} />}
-      {enrollments ? <FormAccomodation /> : <AlertMessage message={message} />}
+      {reserve ? (
+        <FinalizePayment orderData={orderData} />
+      ) : enrollments ? (
+        <>
+          <FormTicket />
+          <FormAccomodation />
+        </>
+      ) : (
+        <AlertMessage message={message} />
+      )}
     </>
   );
 }
