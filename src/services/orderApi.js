@@ -1,7 +1,7 @@
 import api from './api';
 
-export async function updateOrderPayment(body, token) {
-  const response = await api.put('/orders', body, {
+export async function updateOrderPayment(token) {
+  const response = await api.put('/orders', {
     headers: {
       Authorization: `Bearer ${token}`,
     },
