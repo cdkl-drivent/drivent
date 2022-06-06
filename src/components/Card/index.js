@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import FormCard from '../FormCard';
 import { SCSecondaryText } from '../FormTicket/styled';
-import { Button } from '@material-ui/core';
-import CardData from '../CardData';
-import styled from 'styled-components';
 import useToken from '../../hooks/useToken';
 import * as orderApi from '../../services/orderApi';
+import CardData from './CardData';
+import FinalizeButtons from '../FinalizeButtons/FinalizeButtons';
 
 function Card() {
   const token = useToken();
@@ -20,7 +19,7 @@ function Card() {
   useEffect(() => {
     //carregar info da order
     setOrder({
-      payment: true,
+      payment: false,
     });
   }, []);
 
@@ -35,34 +34,25 @@ function Card() {
     e.preventDefault();
     // comunicação com API de pagamento
     try {
-      await orderApi.updateOrder(values, token);
+      await orderApi.updateOrderPayment(token);
     } catch (e) {
+      // eslint-disable-next-line
       console.log(e);
     }
   }
 
   return (
-    <>
+    <div>
       <SCSecondaryText>Pagamento</SCSecondaryText>
-      {order.payment ? (
-        'Pagamento confirmado'
-      ) : (
-        <FormCard onSubmit={handleSubmit}>
-          <CardData values={values} onChange={handleChange}>
-            Cartão
-          </CardData>
-          <StyledButton variant="contained" type="submit">
-            FINALIZAR PAGAMENTO
-          </StyledButton>
-        </FormCard>
-      )}
-    </>
+
+      <FormCard onSubmit={handleSubmit}>
+        <CardData values={values} onChange={handleChange}>
+          Cartão
+        </CardData>
+        <FinalizeButtons />
+      </FormCard>
+    </div>
   );
 }
 
 export default Card;
-
-const StyledButton = styled(Button)`
-  margin-top: 50px;
-  cursor: pointer;
-`;

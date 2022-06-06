@@ -1,5 +1,6 @@
 import usePayment from '../../hooks/usePayment';
 import useReserve from '../../hooks/useReserve';
+import Buttons from '../Buttons';
 import { SCFinalizeButtons } from './styled';
 
 export default function FinalizeButtons() {
@@ -12,8 +13,8 @@ export default function FinalizeButtons() {
 
   return (
     <SCFinalizeButtons>
-      <button onClick={() => setReserve(false)}>Voltar</button>
-      <button onClick={handleFinalize}>Finalizar Pagamento</button>
+      <Buttons onClick={() => setReserve(false)}>Voltar</Buttons>
+      <Buttons onClick={handleFinalize}>Finalizar Pagamento</Buttons>
     </SCFinalizeButtons>
   );
 }

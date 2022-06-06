@@ -1,9 +1,9 @@
 import { Box } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
-import CardInputs from '../CardInputs';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
+import CardInputs from './CardInputs';
 
 function CardData({ values, onChange }) {
   return (

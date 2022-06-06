@@ -1,9 +1,9 @@
-import AddCard from '../AddCard/AddCard';
+import Card from '../Card';
 import ChosenTicket from '../ChosenTicket/ChosenTicket';
-import FinalizeButtons from '../FinalizeButtons/FinalizeButtons';
 import { SCFinalizePayment } from './styled';
 import usePayment from '../../hooks/usePayment';
 import ConfirmationMsg from '../ConfirmationMsg/ConfimationMsg';
+import FinalizeButtons from '../FinalizeButtons/FinalizeButtons';
 
 export default function FinalizePayment({ orderData }) {
   const { payment } = usePayment();
@@ -13,7 +13,7 @@ export default function FinalizePayment({ orderData }) {
       {!payment ? 
         (
           <>
-            <AddCard />
+            <Card />
             <FinalizeButtons />
           </>
         )
@@ -22,7 +22,7 @@ export default function FinalizePayment({ orderData }) {
           <ConfirmationMsg />
         )
       }
-      
+      <Card />
     </SCFinalizePayment>
   );
 }

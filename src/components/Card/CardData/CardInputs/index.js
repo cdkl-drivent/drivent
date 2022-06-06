@@ -1,8 +1,8 @@
 import { Box } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
-import Input from '../Form/Input';
-import { InputWrapper } from '../PersonalInformationForm/InputWrapper';
+import Input from '../../../Form/Input';
+import { InputWrapper } from '../../../PersonalInformationForm/InputWrapper';
 
 function CardInputs({ values, onChange }) {
   function handleDate(e) {

@@ -15,5 +15,5 @@ export default function TicketSummary({ orderData }) {
 }
 
 const SCReserveButton = styled(SCSecondaryText)`
-  margin: 43px 0 17px;
+  margin: 30px 0 17px;
 `;

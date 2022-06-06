@@ -10,14 +10,13 @@ function Ticket({ orderData, setOrderData }) {
   const token = useToken();
 
   useEffect(() => {
-    loadOrderData();
+    loadData();
   }, []);
 
-  async function loadOrderData() {
+  async function loadData() {
     try {
-      const orderData = await ticketApi.getTicketInfo(token);
-      setTickets(orderData);
-      console.log(orderData);
+      const data = await ticketApi.getTicketInfo(token);
+      setTickets(data);
     } catch (error) {
       // eslint-disable-next-line
       console.log(error);
@@ -28,9 +27,7 @@ function Ticket({ orderData, setOrderData }) {
     <>
       <StyledButtonsBox>
         {tickets.map((ticket, i) => (
-          <>
-            <TicketButton key={i} {...ticket} orderData={orderData} setOrderData={setOrderData} />
-          </>
+          <TicketButton key={i} {...ticket} orderData={orderData} setOrderData={setOrderData} />
         ))}
       </StyledButtonsBox>
     </>

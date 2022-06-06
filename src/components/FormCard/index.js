@@ -13,5 +13,4 @@ const StyledForm = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 25px;
 `;
