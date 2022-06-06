@@ -16,6 +16,7 @@ export default function Payment() {
   const token = useToken();
   const { reserve } = useReserve();
   const { orderData } = useOrder();
+
   useEffect(() => {
     loadData();
   }, []);

@@ -3,6 +3,7 @@ import useReserve from '../../../hooks/useReserve';
 
 export default function ReserveButton() {
   const { setReserve } = useReserve();
+
   return (
     <StyledReserveButton
       onClick={() => {
