@@ -18,7 +18,7 @@ export async function getOrder(token) {
   return response.data;
 }
 
-export async function createOrder(body, token) {
+export async function createOrUpdate(body, token) {
   const response = await api.post('/orders', body, {
     headers: {
       Authorization: `Bearer ${token}`,
