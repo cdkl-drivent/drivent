@@ -34,7 +34,7 @@ function Card() {
     e.preventDefault();
     // comunicação com API de pagamento
     try {
-      await orderApi.updateOrderPayment(values, token);
+      await orderApi.updateOrderPayment(token);
     } catch (e) {
       // eslint-disable-next-line
       console.log(e);
@@ -44,16 +44,13 @@ function Card() {
   return (
     <div>
       <SCSecondaryText>Pagamento</SCSecondaryText>
-      {order?.payment ? (
-        'Pagamento confirmado'
-      ) : (
-        <FormCard onSubmit={handleSubmit}>
-          <CardData values={values} onChange={handleChange}>
-            Cartão
-          </CardData>
-          <FinalizeButtons />
-        </FormCard>
-      )}
+
+      <FormCard onSubmit={handleSubmit}>
+        <CardData values={values} onChange={handleChange}>
+          Cartão
+        </CardData>
+        <FinalizeButtons />
+      </FormCard>
     </div>
   );
 }
