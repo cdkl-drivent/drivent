@@ -1,17 +1,20 @@
+import usePayment from '../../hooks/usePayment';
 import useReserve from '../../hooks/useReserve';
 import Buttons from '../Buttons';
 import { SCFinalizeButtons } from './styled';
 
 export default function FinalizeButtons() {
   const { setReserve } = useReserve();
+  const { setPayment } = usePayment();
+
+  function handleFinalize() {
+    setPayment(true);
+  };
+
   return (
     <SCFinalizeButtons>
-      <Buttons variant="contained" onClick={() => setReserve(false)}>
-        VOLTAR
-      </Buttons>
-      <Buttons variant="contained" type="submit">
-        FINALIZAR PAGAMENTO
-      </Buttons>
+      <Buttons onClick={() => setReserve(false)}>Voltar</Buttons>
+      <Buttons onClick={handleFinalize}>Finalizar Pagamento</Buttons>
     </SCFinalizeButtons>
   );
 }
