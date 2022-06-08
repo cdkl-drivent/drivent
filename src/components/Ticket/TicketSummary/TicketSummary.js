@@ -9,7 +9,7 @@ export default function TicketSummary({ orderData }) {
   return (
     <>
       <SCReserveButton>Fechado! O total ficou em R$ {totalPrice * 0.01}. Agora é só confirmar.</SCReserveButton>
-      <ReserveButton />
+      <ReserveButton orderData={orderData} />
     </>
   );
 }

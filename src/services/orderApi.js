@@ -1,7 +1,7 @@
 import api from './api';
 
 export async function updateOrderPayment(token) {
-  const response = await api.put('/orders', {
+  const response = await api.put('/orders', '', {
     headers: {
       Authorization: `Bearer ${token}`,
     },
