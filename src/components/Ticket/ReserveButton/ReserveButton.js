@@ -1,18 +1,28 @@
 import styled from 'styled-components';
 import useReserve from '../../../hooks/useReserve';
+import useToken from '../../../hooks/useToken';
+import * as orderApi from '../../../services/orderApi';
 
-export default function ReserveButton() {
+export default function ReserveButton({ orderData }) {
+  const token = useToken();
   const { setReserve } = useReserve();
+  const order = {
+    ticketType: orderData.ticketType,
+    accomodationType: orderData.accomodationType,
+    price: orderData.ticketPrice + orderData.accomodationPrice,
+  };
 
-  return (
-    <StyledReserveButton
-      onClick={() => {
-        setReserve(true);
-      }}
-    >
-      RESERVAR INGRESSO
-    </StyledReserveButton>
-  );
+  async function handleReservation(e) {
+    e.preventDefault();
+    try {
+      await orderApi.createOrUpdate(order, token);
+      setReserve(true);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  return <StyledReserveButton onClick={handleReservation}>RESERVAR INGRESSO</StyledReserveButton>;
 }
 
 const StyledReserveButton = styled.button`
