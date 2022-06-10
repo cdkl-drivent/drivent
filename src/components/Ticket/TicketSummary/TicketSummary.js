@@ -1,21 +1,19 @@
 import styled from 'styled-components';
+import { SCSecondaryText } from '../../FormTicket/styled';
 import ReserveButton from '../ReserveButton/ReserveButton';
 
-export default function TicketSummary({ data }) {
+export default function TicketSummary({ orderData }) {
+  const totalPrice =
+    orderData !== 'Online' ? orderData.ticketPrice + orderData.accomodationPrice : orderData.ticketPrice;
+
   return (
     <>
-      <StyledSummary>Fechado! O total ficou em R$ {data.ticketPrice * 0.01}. Agora é só confirmar.</StyledSummary>
-      <ReserveButton />
+      <SCReserveButton>Fechado! O total ficou em R$ {totalPrice * 0.01}. Agora é só confirmar.</SCReserveButton>
+      <ReserveButton orderData={orderData} />
     </>
   );
-};
+}
 
-const StyledSummary = styled.p`
-  font-family: 'arial';
-  font-weight: 400;
-  font-size: 34px;
-  line-height: 40px;
-  color: #000000;
-
-  margin-top: 37px;
+const SCReserveButton = styled(SCSecondaryText)`
+  margin: 30px 0 17px;
 `;

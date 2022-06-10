@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
-const SCFormTicket = styled.form`
+const SCFormAccomodation = styled.form`
   display: flex;
   flex-direction: column;
   gap: 44px;
+
+  margin-top: 30px;
 `;
 
 const SCSubContainer = styled.div`
@@ -19,4 +21,4 @@ const SCSecondaryText = styled.p`
   color: #8e8e8e;
 `;
 
-export { SCFormTicket, SCSubContainer, SCSecondaryText };
+export { SCFormAccomodation, SCSubContainer, SCSecondaryText };

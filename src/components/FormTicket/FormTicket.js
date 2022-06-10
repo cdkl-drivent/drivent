@@ -1,13 +1,10 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import OrderContext from '../../contexts/OrderContext';
 import Ticket from '../Ticket';
-import { SCFormTicket, SCSubContainer } from './styled';
+import { SCFormTicket, SCSubContainer, SCSecondaryText } from './styled';
 
 export default function FormTicket() {
-  const [data, setData] = useState({
-    ticketType: '',
-    ticketPrice: '',
-    hotel: '',
-  });
+  const { orderData, setOrderData } = useContext(OrderContext);
 
   function handleSelection(e) {
     e.preventDefault();
@@ -17,8 +14,8 @@ export default function FormTicket() {
   return (
     <SCFormTicket onSubmit={handleSelection}>
       <SCSubContainer>
-        <p>Primeiro, escolha sua modalidade de ingresso</p>
-        <Ticket data={data} setData={setData} />
+        <SCSecondaryText>Primeiro, escolha sua modalidade de ingresso</SCSecondaryText>
+        <Ticket orderData={orderData} setOrderData={setOrderData} />
       </SCSubContainer>
     </SCFormTicket>
   );

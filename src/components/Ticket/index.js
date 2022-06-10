@@ -4,9 +4,8 @@ import React, { useEffect, useState } from 'react';
 import * as ticketApi from '../../services/ticketApi';
 import useToken from '../../hooks/useToken';
 import TicketButton from './TicketButton/TicketButton';
-import TicketSummary from './TicketSummary/TicketSummary';
 
-function Ticket({ data, setData }) {
+function Ticket({ orderData, setOrderData }) {
   const [tickets, setTickets] = useState([]);
   const token = useToken();
 
@@ -18,8 +17,8 @@ function Ticket({ data, setData }) {
     try {
       const data = await ticketApi.getTicketInfo(token);
       setTickets(data);
-      console.log(data);
     } catch (error) {
+      // eslint-disable-next-line
       console.log(error);
     }
   }
@@ -28,15 +27,9 @@ function Ticket({ data, setData }) {
     <>
       <StyledButtonsBox>
         {tickets.map((ticket, i) => (
-          <>
-            <TicketButton key={i} {...ticket} data={data} setData={setData} />
-            
-          </>
+          <TicketButton key={i} {...ticket} orderData={orderData} setOrderData={setOrderData} />
         ))}
       </StyledButtonsBox>
-      {data.ticketType === 'Online' &&
-        <TicketSummary data={data}/> 
-      }
     </>
   );
 }
