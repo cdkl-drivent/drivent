@@ -1,44 +1,35 @@
 import styled from 'styled-components';
+import useHotel from '../../hooks/useHotel';
 
 export default function HotelButton({ hotelData }) {
-//   function getInput(e) {
-//     if (e.target.value === 'Online') {
-//       setOrderData({
-//         ...orderData,
-//         ticketType: e.target.value,
-//         ticketPrice: parseInt(e.target.id),
-//         accomodationType: 'Sem Hotel',
-//         accomodationPrice: 0,
-//       });
-//     } else {
-//       setOrderData({ ...orderData, ticketType: e.target.value, ticketPrice: parseInt(e.target.id) });
-//     }
-//   }
-  console.log(hotelData);
+  const { hotel, setHotel } = useHotel();
+  function selectHotel(e) {
+    setHotel(e.target.value);
+    console.log(e.target.value);
+  }
+
   return (
     <StyledHotelBox
       key={hotelData.id}
-
+      select={hotelData.id === hotel.id}
+      id={hotelData.id}
+      value={hotelData.id}
+      onClick={selectHotel}
+      type="button"
     >
       <StyledImage image={hotelData.image}>
+        <img src={hotelData.image}></img>
       </StyledImage>
       <StyledName>{hotelData.name}</StyledName>
       <StyledRoomTypes>
         <p>Tipos de acomodação:</p>
         {hotelData.roomTypes}
       </StyledRoomTypes>
+      <StyledBeds>
+        <p>Vagas disponíveis:</p>
+        {hotelData.availableBeds}
+      </StyledBeds>
     </StyledHotelBox>
-    // <StyledTicketBox
-    //   key={type}
-    //   select={orderData.ticketType === type}
-    //   id={price}
-    //   value={type}
-    //   onClick={getInput}
-    //   type="button"
-    // >
-    //   <StyledBoxText>{type}</StyledBoxText>
-    //   <StyledPriceText>R$ {price * 0.01}</StyledPriceText>
-    // </StyledTicketBox>
   );
 }
 
@@ -51,17 +42,22 @@ const StyledHotelBox = styled.button`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3px;
+  gap: 10px;
   border: 1px solid #cecece;
   border-radius: 20px;
   cursor: pointer;
   ${(props) => props.select && 'background-color: #ffeed2; border: none;'}
 `;
 
-const StyledImage = styled.img`
-    width: 100%;
-    height: 50px;
-    src: ${(props) => props.image};
+const StyledImage = styled.div`
+    width: 168px;
+    height: 109px;
+    margin-top: 0px;
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
 `;
 
 const StyledName = styled.p`
@@ -82,12 +78,15 @@ const StyledRoomTypes = styled.p`
   }
 `;
 
-const StyledPriceText = styled.p`
-  font-family: 'arial';
+const StyledBeds = styled.div`
   font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 12px;
+  line-height: 19px;
   text-align: center;
-  color: #898989;
+  color: #454545;
   pointer-events: none;
+  p {
+    font-weight: 700;
+    
+  }
 `;

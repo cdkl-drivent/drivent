@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import FormAccomodation from '../../../components/FormAccomodation/FormAccomodation';
 import AlertMessage from '../../../components/AlertMessage';
-import Card from '../../../components/Card';
 import FormTicket from '../../../components/FormTicket/FormTicket';
 import useToken from '../../../hooks/useToken';
 import * as enrollmentApi from '../../../services/enrollmentApi';
