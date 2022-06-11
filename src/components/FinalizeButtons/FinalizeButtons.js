@@ -9,11 +9,13 @@ export default function FinalizeButtons() {
 
   function handleFinalize() {
     setPayment(true);
-  };
+  }
 
   return (
     <SCFinalizeButtons>
-      <Buttons onClick={() => setReserve(false)}>Voltar</Buttons>
+      <Buttons onClick={() => setReserve(false)} type="button">
+        Voltar
+      </Buttons>
       <Buttons onClick={handleFinalize}>Finalizar Pagamento</Buttons>
     </SCFinalizeButtons>
   );
